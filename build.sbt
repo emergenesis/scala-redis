@@ -20,7 +20,8 @@ libraryDependencies <++= scalaVersion { scalaVersion =>
     "junit"          % "junit"         % "4.8.1"  % "test",
     "org.scalatest" %% "scalatest"     % scalatestVersion(scalaVersion) % "test",
     "com.twitter"    % "util"          % "1.11.4" % "test",
-    "com.twitter"    % "finagle-core"  % "1.9.0" % "test"
+    "com.twitter"    % "finagle-core"  % "1.9.0" % "test",
+    "thrift"         % "libthrift"     % "0.50" from "http://maven.twttr.com/thrift/libthrift/0.5.0/libthrift-0.5.0.jar"
   )
 }
 
@@ -31,6 +32,8 @@ scalacOptions ++= Seq("-encoding", "UTF-8", "-deprecation", "-Xcheckinit")
 //  Seq("-doc-title", name, "-doc-version", ver)
 //}
 
-publishTo := Some("Scala-Tools Nexus Repository for Releases" at "http://nexus.scala-tools.org/content/repositories/releases")
+//publishTo := Some("Scala-Tools Nexus Repository for Releases" at "http://nexus.scala-tools.org/content/repositories/releases")
+
+publishTo := Some(Resolver.file("file",  new File(Path.userHome.absolutePath+"/.m2/repository")))
 
 credentials += Credentials(Path.userHome / ".ivy2" / ".credentials")
